@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Scissors, Crown, Heart, Star, MapPin, ArrowRight, MessageCircle } from "lucide-react";
+import { Sparkles, Scissors, Crown, Heart, Star, MapPin, ArrowRight, MessageCircle, Phone } from "lucide-react";
 import SEO from "@/components/SEO";
 import { WHATSAPP_LINK, PHONE_LINK, DIRECTIONS_LINK } from "@/lib/contact";
 import bride from "@/assets/bride.jpeg";
