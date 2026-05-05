@@ -8,3 +8,4 @@ export const INSTAGRAM = "https://www.instagram.com/kokabeautyloungeindirapuram"
 export const FACEBOOK = "https://www.facebook.com/share/18gqu6A6a5";
 export const GOOGLE_REVIEW = "https://g.page/r/CbGZCGKjvleREBM/review";
 export const MAPS_EMBED = "https://www.google.com/maps?q=Shakti+Khand+1+Indirapuram+Ghaziabad&output=embed";
+export const DIRECTIONS_LINK = "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent(ADDRESS);
