@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
-import { Sparkles, Scissors, Crown, Heart, Star, MapPin, ArrowRight, MessageCircle } from "lucide-react";
+import { Sparkles, Scissors, Crown, Heart, Star, MapPin, ArrowRight, MessageCircle, Phone } from "lucide-react";
 import SEO from "@/components/SEO";
-import { WHATSAPP_LINK } from "@/lib/contact";
+import { WHATSAPP_LINK, PHONE_LINK, DIRECTIONS_LINK } from "@/lib/contact";
 import bride from "@/assets/bride.jpeg";
 import interior from "@/assets/salon-interior.jpeg";
 import work from "@/assets/salon-work.jpeg";
@@ -44,12 +44,18 @@ export default function Home() {
             <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-xl">
               From everyday glow to unforgettable bridal moments — experience luxury salon care at KOKA Beauty Lounge, Indirapuram.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-rose px-7 py-3.5 rounded-full font-medium shadow-elegant hover:scale-105 transition-smooth">
+            <div className="flex flex-wrap gap-3 sm:gap-4">
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-rose px-6 py-3 rounded-full font-medium shadow-elegant hover:scale-105 transition-smooth">
                 Book Appointment <ArrowRight size={18} />
               </a>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] px-7 py-3.5 rounded-full font-medium shadow-elegant hover:scale-105 transition-smooth">
-                <MessageCircle size={18} /> WhatsApp Now
+              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-[#25D366] px-6 py-3 rounded-full font-medium shadow-elegant hover:scale-105 transition-smooth">
+                <MessageCircle size={18} /> WhatsApp
+              </a>
+              <a href={PHONE_LINK} className="inline-flex items-center gap-2 bg-background/15 backdrop-blur border border-primary-foreground/40 px-6 py-3 rounded-full font-medium shadow-elegant hover:bg-background/25 hover:scale-105 transition-smooth">
+                <Phone size={18} /> Call Now
+              </a>
+              <a href={DIRECTIONS_LINK} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 bg-gradient-gold text-accent-foreground px-6 py-3 rounded-full font-medium shadow-gold hover:scale-105 transition-smooth">
+                <MapPin size={18} /> Get Directions
               </a>
             </div>
           </div>
