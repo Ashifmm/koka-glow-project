@@ -97,7 +97,7 @@ export default function Home() {
             <h2 className="font-serif text-4xl md:text-5xl">Inside KOKA Beauty Lounge</h2>
           </div>
           <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {["v1", "v2", "v3"].map(v => (
+            {["v3", "v1", "v2"].map(v => (
               <video key={v} src={`/videos/${v}.mp4`} muted loop autoPlay playsInline
                 className="rounded-2xl w-full aspect-[9/16] object-cover shadow-elegant"
                 aria-label="KOKA Beauty Lounge salon video" />
