@@ -30,7 +30,7 @@ export default function Navbar() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-smooth ${scrolled ? "bg-background/95 backdrop-blur shadow-soft" : "bg-background/70 backdrop-blur-sm"}`}>
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="KOKA Beauty Lounge logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
+          <img src={logo} alt="logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
           <div className="leading-tight">
             <div className="font-serif text-xl font-semibold text-gradient-gold">KOKA</div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Beauty Lounge</div>
