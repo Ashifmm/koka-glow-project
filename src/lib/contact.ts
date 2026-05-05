@@ -1,0 +1,10 @@
+export const WHATSAPP_NUMBER = "919289656555";
+export const WHATSAPP_MESSAGE = "Hi, I want to book an appointment at KOKA Beauty Lounge";
+export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+export const PHONE = "+91 92896 56555";
+export const PHONE_LINK = "tel:+919289656555";
+export const ADDRESS = "Ground Floor, 333/8, Shakti Khand I, Indirapuram, Ghaziabad, Uttar Pradesh 201014";
+export const INSTAGRAM = "https://www.instagram.com/kokabeautyloungeindirapuram";
+export const FACEBOOK = "https://www.facebook.com/share/18gqu6A6a5";
+export const GOOGLE_REVIEW = "https://g.page/r/CbGZCGKjvleREBM/review";
+export const MAPS_EMBED = "https://www.google.com/maps?q=Shakti+Khand+1+Indirapuram+Ghaziabad&output=embed";
