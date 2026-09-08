@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import LazyVideo from "@/components/LazyVideo";
 import { homeVideos } from "@/data/galleryVideos";
@@ -266,12 +267,12 @@ export default function Gallery() {
             <p className="text-muted-foreground text-sm sm:text-base mb-6 max-w-lg mx-auto leading-relaxed">
               Our professional bridal makeup team travels to your home, hotel, or wedding venue. Reserve your wedding date before slots fill up.
             </p>
-            <a
-              href="/#check-availability"
+            <Link
+              to="/#check-availability"
               className="inline-flex items-center gap-2 bg-gradient-rose text-primary-foreground px-8 py-3.5 rounded-full font-semibold shadow-elegant hover:scale-105 transition-smooth text-sm"
             >
               Check Wedding Date Availability <ArrowRight size={16} />
-            </a>
+            </Link>
           </div>
         </div>
       </section>

@@ -1,7 +1,8 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X, Instagram, Facebook } from "lucide-react";
-import { INSTAGRAM, FACEBOOK, WHATSAPP_LINK } from "@/lib/contact";
+import { INSTAGRAM, FACEBOOK } from "@/lib/contact";
+import { prefetchRoute } from "@/lib/prefetch";
 import logo from "@/assets/logo.webp";
 
 const links = [
@@ -33,10 +34,25 @@ export default function Navbar() {
 
   useEffect(() => setOpen(false), [loc.pathname]);
 
+  const handleAvailabilityClick = (e: React.MouseEvent) => {
+    if (loc.pathname === "/") {
+      e.preventDefault();
+      const el = document.getElementById("check-availability");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <header className={`fixed top-0 inset-x-0 z-50 transition-smooth ${scrolled ? "bg-background/95 backdrop-blur shadow-soft" : "bg-background/70 backdrop-blur-sm"}`}>
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
-        <Link to="/" className="flex items-center gap-3">
+        <Link
+          to="/"
+          onMouseEnter={() => prefetchRoute("/")}
+          onTouchStart={() => prefetchRoute("/")}
+          className="flex items-center gap-3"
+        >
           <img src={logo} alt="logo" width={48} height={48} className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
           <div className="leading-tight">
             <div className="font-serif text-xl font-semibold text-gradient-gold">KOKA</div>
@@ -50,6 +66,8 @@ export default function Navbar() {
               <NavLink
                 to={l.to}
                 end={l.to === "/"}
+                onMouseEnter={() => prefetchRoute(l.to)}
+                onTouchStart={() => prefetchRoute(l.to)}
                 className={({ isActive }) => `text-sm font-medium transition-smooth hover:text-primary ${isActive ? "text-primary" : "text-foreground"}`}
               >
                 {l.label}
@@ -65,9 +83,15 @@ export default function Navbar() {
           <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-foreground hover:text-primary transition-smooth">
             <Facebook size={20} />
           </a>
-          <a href="/#check-availability" className="bg-gradient-rose text-primary-foreground px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold shadow-soft hover:shadow-elegant hover:scale-105 transition-smooth">
+          <Link
+            to="/#check-availability"
+            onMouseEnter={() => prefetchRoute("/")}
+            onTouchStart={() => prefetchRoute("/")}
+            onClick={handleAvailabilityClick}
+            className="bg-gradient-rose text-primary-foreground px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold shadow-soft hover:shadow-elegant hover:scale-105 transition-smooth"
+          >
             Check Availability
-          </a>
+          </Link>
         </div>
 
         <button className="lg:hidden p-2" onClick={() => setOpen(v => !v)} aria-label="Menu">
@@ -80,7 +104,13 @@ export default function Navbar() {
           <ul className="flex flex-col p-4 gap-3">
             {links.map(l => (
               <li key={l.to}>
-                <NavLink to={l.to} end={l.to === "/"} className={({ isActive }) => `block py-2 text-base ${isActive ? "text-primary font-medium" : "text-foreground"}`}>
+                <NavLink
+                  to={l.to}
+                  end={l.to === "/"}
+                  onMouseEnter={() => prefetchRoute(l.to)}
+                  onTouchStart={() => prefetchRoute(l.to)}
+                  className={({ isActive }) => `block py-2 text-base ${isActive ? "text-primary font-medium" : "text-foreground"}`}
+                >
                   {l.label}
                 </NavLink>
               </li>
@@ -90,9 +120,18 @@ export default function Navbar() {
               <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
             </li>
             <li>
-              <a href="/#check-availability" onClick={() => setOpen(false)} className="block text-center bg-gradient-rose text-primary-foreground px-5 py-3 rounded-full font-semibold text-sm">
+              <Link
+                to="/#check-availability"
+                onMouseEnter={() => prefetchRoute("/")}
+                onTouchStart={() => prefetchRoute("/")}
+                onClick={(e) => {
+                  setOpen(false);
+                  handleAvailabilityClick(e);
+                }}
+                className="block text-center bg-gradient-rose text-primary-foreground px-5 py-3 rounded-full font-semibold text-sm"
+              >
                 Check Wedding Date Availability
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

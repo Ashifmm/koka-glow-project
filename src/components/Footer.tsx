@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Facebook, MapPin, Phone, MessageCircle, Star } from "lucide-react";
 import { ADDRESS, FACEBOOK, GOOGLE_REVIEW, INSTAGRAM, PHONE, PHONE_LINK, WHATSAPP_LINK } from "@/lib/contact";
+import { prefetchRoute } from "@/lib/prefetch";
 
 export default function Footer() {
   return (
@@ -17,11 +18,11 @@ export default function Footer() {
         <div>
           <h4 className="font-serif text-lg mb-3">Explore</h4>
           <ul className="space-y-2 text-sm">
-            <li><Link to="/" className="hover:text-primary">Home</Link></li>
-            <li><Link to="/services" className="hover:text-primary">Services</Link></li>
-            <li><Link to="/gallery" className="hover:text-primary">Gallery</Link></li>
-            <li><Link to="/about" className="hover:text-primary">About</Link></li>
-            <li><Link to="/contact" className="hover:text-primary">Contact</Link></li>
+            <li><Link to="/" onMouseEnter={() => prefetchRoute("/")} onTouchStart={() => prefetchRoute("/")} className="hover:text-primary">Home</Link></li>
+            <li><Link to="/services" onMouseEnter={() => prefetchRoute("/services")} onTouchStart={() => prefetchRoute("/services")} className="hover:text-primary">Services</Link></li>
+            <li><Link to="/gallery" onMouseEnter={() => prefetchRoute("/gallery")} onTouchStart={() => prefetchRoute("/gallery")} className="hover:text-primary">Gallery</Link></li>
+            <li><Link to="/about" onMouseEnter={() => prefetchRoute("/about")} onTouchStart={() => prefetchRoute("/about")} className="hover:text-primary">About</Link></li>
+            <li><Link to="/contact" onMouseEnter={() => prefetchRoute("/contact")} onTouchStart={() => prefetchRoute("/contact")} className="hover:text-primary">Contact</Link></li>
           </ul>
         </div>
         <div>
