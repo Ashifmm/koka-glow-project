@@ -65,8 +65,8 @@ export default function Navbar() {
           <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-foreground hover:text-primary transition-smooth">
             <Facebook size={20} />
           </a>
-          <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="bg-gradient-rose text-primary-foreground px-5 py-2 rounded-full text-sm font-medium shadow-soft hover:shadow-elegant transition-smooth">
-            Book Now
+          <a href="/#check-availability" className="bg-gradient-rose text-primary-foreground px-5 py-2.5 rounded-full text-xs uppercase tracking-wider font-semibold shadow-soft hover:shadow-elegant hover:scale-105 transition-smooth">
+            Check Availability
           </a>
         </div>
 
@@ -90,8 +90,8 @@ export default function Navbar() {
               <a href={FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Facebook size={20} /></a>
             </li>
             <li>
-              <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer" className="block text-center bg-gradient-rose text-primary-foreground px-5 py-3 rounded-full font-medium">
-                Book Appointment
+              <a href="/#check-availability" onClick={() => setOpen(false)} className="block text-center bg-gradient-rose text-primary-foreground px-5 py-3 rounded-full font-semibold text-sm">
+                Check Wedding Date Availability
               </a>
             </li>
           </ul>

@@ -1,6 +1,6 @@
 {
   "name": "KOKA Beauty Lounge",
-  "description": "Premium beauty salon & bridal makeup studio website with SPA client-side routing on Netlify.",
+  "description": "Professional bridal, wedding and destination makeup. KOKA Beauty Lounge comes to your home, hotel or wedding venue. Check wedding date availability.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

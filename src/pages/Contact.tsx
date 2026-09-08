@@ -1,100 +1,142 @@
-import { useState } from "react";
 import SEO from "@/components/SEO";
-import { ADDRESS, MAPS_EMBED, PHONE, PHONE_LINK, WHATSAPP_NUMBER } from "@/lib/contact";
-import { MapPin, Phone, MessageCircle, Clock } from "lucide-react";
+import { ADDRESS, MAPS_EMBED, PHONE, PHONE_LINK, WHATSAPP_LINK, WHATSAPP_BRIDAL_LINK } from "@/lib/contact";
+import { MapPin, Phone, MessageCircle, Clock, Sparkles, Crown } from "lucide-react";
+import WeddingAvailabilityForm from "@/components/WeddingAvailabilityForm";
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: "", phone: "", service: "", message: "" });
-
-  const submit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const text =
-      `Hi, I want to book an appointment at KOKA Beauty Lounge.\n\n` +
-      `Name: ${form.name}\nPhone: ${form.phone}\nService: ${form.service}\nMessage: ${form.message}`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, "_blank");
-  };
-
   return (
     <>
       <SEO
-        title="Contact Us - KOKA Beauty Lounge, Indirapuram, Ghaziabad"
-        description="Visit KOKA Beauty Lounge in Shakti Khand I, Indirapuram. Call +91 92896 56555 or book on WhatsApp."
+        title="Check Availability & Contact - KOKA Beauty Lounge"
+        description="Book your bridal makeup team or salon appointment. We travel to your home, hotel, or wedding venue in Indirapuram, Ghaziabad, and destination locations."
         canonical="https://kokabeautylounge.com/contact"
       />
+
       <section className="bg-gradient-luxury py-16">
         <div className="container mx-auto px-4 text-center">
-          <p className="text-gold uppercase tracking-[0.3em] text-xs mb-3">Get in Touch</p>
-          <h1 className="font-serif text-5xl md:text-6xl mb-4">Visit Our Lounge</h1>
-          <p className="text-muted-foreground max-w-2xl mx-auto">We'd love to pamper you. Book online or drop by our Indirapuram studio.</p>
+          <span className="text-gold uppercase tracking-[0.3em] text-xs font-semibold mb-2 block">
+            We Come To You
+          </span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl font-semibold mb-4 text-foreground">
+            Contact &amp; Wedding Bookings
+          </h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto text-base sm:text-lg">
+            Check wedding date availability for on-location bridal makeup or connect with our Indirapuram lounge.
+          </p>
         </div>
       </section>
 
-      <section className="py-16">
-        <div className="container mx-auto px-4 grid lg:grid-cols-2 gap-10">
-          <div className="bg-card rounded-3xl shadow-soft border border-border p-8">
-            <h2 className="font-serif text-3xl mb-6">Book an Appointment</h2>
-            <form onSubmit={submit} className="space-y-4">
-              <div>
-                <label className="text-sm font-medium">Your Name</label>
-                <input required value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-                  className="mt-1 w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/40" />
+      <section className="py-14 bg-background">
+        <div className="container mx-auto px-4 max-w-6xl">
+          {/* Quick Contact Buttons */}
+          <div className="grid sm:grid-cols-3 gap-4 mb-12">
+            <a
+              href="#wedding-enquiry"
+              className="bg-card p-5 rounded-2xl border border-gold/40 shadow-soft hover:shadow-elegant transition-smooth flex items-center gap-4 group"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-rose text-primary-foreground flex items-center justify-center shrink-0 shadow-soft group-hover:scale-105 transition-smooth">
+                <Crown size={22} />
               </div>
               <div>
-                <label className="text-sm font-medium">Phone Number</label>
-                <input required type="tel" value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
-                  className="mt-1 w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/40" />
+                <div className="font-serif text-lg font-semibold text-foreground">Check Availability</div>
+                <div className="text-xs text-muted-foreground">For Wedding &amp; Bridal Dates</div>
+              </div>
+            </a>
+
+            <a
+              href={WHATSAPP_BRIDAL_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-card p-5 rounded-2xl border border-border shadow-soft hover:shadow-elegant transition-smooth flex items-center gap-4 group"
+            >
+              <div className="w-12 h-12 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-soft group-hover:scale-105 transition-smooth">
+                <MessageCircle size={22} />
               </div>
               <div>
-                <label className="text-sm font-medium">Service Interested In</label>
-                <input value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}
-                  placeholder="e.g. Bridal Makeup, Keratin, Facial"
-                  className="mt-1 w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/40" />
+                <div className="font-serif text-lg font-semibold text-foreground">WhatsApp Us</div>
+                <div className="text-xs text-muted-foreground">Instant Direct Chat</div>
+              </div>
+            </a>
+
+            <a
+              href={PHONE_LINK}
+              className="bg-card p-5 rounded-2xl border border-border shadow-soft hover:shadow-elegant transition-smooth flex items-center gap-4 group"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-gold text-accent-foreground flex items-center justify-center shrink-0 shadow-soft group-hover:scale-105 transition-smooth">
+                <Phone size={20} />
               </div>
               <div>
-                <label className="text-sm font-medium">Message</label>
-                <textarea rows={4} value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
-                  className="mt-1 w-full px-4 py-3 rounded-xl border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/40" />
+                <div className="font-serif text-lg font-semibold text-foreground">Call Now</div>
+                <div className="text-xs text-muted-foreground">{PHONE}</div>
               </div>
-              <button type="submit" className="w-full bg-gradient-rose text-primary-foreground py-3.5 rounded-full font-medium shadow-elegant hover:scale-[1.02] transition-smooth inline-flex items-center justify-center gap-2">
-                <MessageCircle size={18} /> Send via WhatsApp
-              </button>
-            </form>
+            </a>
           </div>
 
-          <div className="space-y-6">
-            <div className="bg-card rounded-3xl shadow-soft border border-border p-8 space-y-5">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shrink-0"><MapPin className="text-accent-foreground" size={20} /></div>
-                <div>
-                  <h3 className="font-serif text-xl mb-1">Address</h3>
-                  <p className="text-sm text-muted-foreground">{ADDRESS}</p>
-                </div>
-              </div>
-              <a href={PHONE_LINK} className="flex gap-4 hover:text-primary transition-smooth">
-                <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shrink-0"><Phone className="text-accent-foreground" size={20} /></div>
-                <div>
-                  <h3 className="font-serif text-xl mb-1">Call Us</h3>
-                  <p className="text-sm">{PHONE}</p>
-                </div>
-              </a>
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-full bg-gradient-gold flex items-center justify-center shrink-0"><Clock className="text-accent-foreground" size={20} /></div>
-                <div>
-                  <h3 className="font-serif text-xl mb-1">Hours</h3>
-                  <p className="text-sm text-muted-foreground">Mon – Sun: 10:00 AM – 8:00 PM</p>
-                </div>
-              </div>
+          <div className="grid lg:grid-cols-12 gap-10 items-start">
+            {/* Wedding Availability Form */}
+            <div id="wedding-enquiry" className="lg:col-span-7">
+              <WeddingAvailabilityForm id="contact-form" />
             </div>
 
-            <div className="rounded-3xl overflow-hidden shadow-soft border border-border h-[300px]">
-              <iframe
-                title="KOKA Beauty Lounge location"
-                src={MAPS_EMBED}
-                width="100%" height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
+            {/* Studio / Salon Info */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="bg-card rounded-3xl shadow-soft border border-border p-6 sm:p-8 space-y-5">
+                <div className="border-b border-border pb-4">
+                  <div className="inline-flex items-center gap-1.5 text-gold text-xs uppercase tracking-wider font-semibold mb-1">
+                    <Sparkles size={13} /> Studio Consultation Base
+                  </div>
+                  <h3 className="font-serif text-2xl font-semibold text-foreground">KOKA Beauty Lounge</h3>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    Indirapuram, Ghaziabad • For Pre-Bridal Care, Trials &amp; Salon Services
+                  </p>
+                </div>
+
+                <div className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-gradient-gold flex items-center justify-center shrink-0 text-accent-foreground shadow-gold">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-base font-semibold mb-0.5">Address</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{ADDRESS}</p>
+                  </div>
+                </div>
+
+                <a href={PHONE_LINK} className="flex gap-4 hover:text-primary transition-smooth">
+                  <div className="w-11 h-11 rounded-full bg-gradient-gold flex items-center justify-center shrink-0 text-accent-foreground shadow-gold">
+                    <Phone size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-base font-semibold mb-0.5">Phone &amp; WhatsApp</h4>
+                    <p className="text-xs sm:text-sm">{PHONE}</p>
+                  </div>
+                </a>
+
+                <div className="flex gap-4">
+                  <div className="w-11 h-11 rounded-full bg-gradient-gold flex items-center justify-center shrink-0 text-accent-foreground shadow-gold">
+                    <Clock size={18} />
+                  </div>
+                  <div>
+                    <h4 className="font-serif text-base font-semibold mb-0.5">Studio Hours</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Monday – Sunday: 10:00 AM – 8:00 PM</p>
+                    <p className="text-[11px] text-primary mt-0.5">
+                      *Bridal on-location teams available 24/7 as per your ceremony call time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map embed */}
+              <div className="rounded-3xl overflow-hidden shadow-soft border border-border h-[260px]">
+                <iframe
+                  title="KOKA Beauty Lounge location"
+                  src={MAPS_EMBED}
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
             </div>
           </div>
         </div>

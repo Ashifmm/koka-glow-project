@@ -1,6 +1,8 @@
 export const WHATSAPP_NUMBER = "919289656555";
 export const WHATSAPP_MESSAGE = "Hi, I want to book an appointment at KOKA Beauty Lounge";
 export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;
+export const WHATSAPP_BRIDAL_MESSAGE = "Hi, I would like to check wedding date availability for Bridal Makeup with KOKA Beauty Lounge.";
+export const WHATSAPP_BRIDAL_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_BRIDAL_MESSAGE)}`;
 export const PHONE = "+91 92896 56555";
 export const PHONE_LINK = "tel:+919289656555";
 export const ADDRESS = "Ground Floor, 333/8, Shakti Khand I, Indirapuram, Ghaziabad, Uttar Pradesh 201014";
