@@ -1,8 +1,6 @@
 {
   "name": "KOKA Beauty Lounge",
-  "description": "Premium beauty salon & bridal makeup studio in Indirapuram, Ghaziabad. Hair, skin, bridal, spa & more.",
+  "description": "Premium beauty salon & bridal makeup studio website with SPA client-side routing on Netlify.",
   "requestFramePermissions": [],
-  "majorCapabilities": [
-    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
-  ]
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
