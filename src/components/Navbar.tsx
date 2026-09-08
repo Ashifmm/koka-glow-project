@@ -2,7 +2,7 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Menu, X, Instagram, Facebook } from "lucide-react";
 import { INSTAGRAM, FACEBOOK, WHATSAPP_LINK } from "@/lib/contact";
-import logo from "@/assets/logo.jpeg";
+import logo from "@/assets/logo.webp";
 
 const links = [
   { to: "/", label: "Home" },
@@ -18,9 +18,16 @@ export default function Navbar() {
   const loc = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
+    let prev = window.scrollY > 20;
+    setScrolled(prev);
+    const onScroll = () => {
+      const next = window.scrollY > 20;
+      if (next !== prev) {
+        prev = next;
+        setScrolled(next);
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -30,7 +37,7 @@ export default function Navbar() {
     <header className={`fixed top-0 inset-x-0 z-50 transition-smooth ${scrolled ? "bg-background/95 backdrop-blur shadow-soft" : "bg-background/70 backdrop-blur-sm"}`}>
       <nav className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="logo" className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
+          <img src={logo} alt="logo" width={48} height={48} className="h-12 w-12 rounded-full object-cover ring-2 ring-gold" />
           <div className="leading-tight">
             <div className="font-serif text-xl font-semibold text-gradient-gold">KOKA</div>
             <div className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Beauty Lounge</div>

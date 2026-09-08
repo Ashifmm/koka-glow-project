@@ -5,11 +5,10 @@ import { GOOGLE_REVIEW } from "@/lib/contact";
 export default function ReviewPopup() {
   const [show, setShow] = useState(false);
   useEffect(() => {
+    if (typeof window === "undefined" || sessionStorage.getItem("koka_review_shown")) return;
     const t = setTimeout(() => {
-      if (!sessionStorage.getItem("koka_review_shown")) {
-        setShow(true);
-        sessionStorage.setItem("koka_review_shown", "1");
-      }
+      setShow(true);
+      sessionStorage.setItem("koka_review_shown", "1");
     }, 5000);
     return () => clearTimeout(t);
   }, []);

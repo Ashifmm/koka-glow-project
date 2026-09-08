@@ -1,8 +1,8 @@
 import SEO from "@/components/SEO";
-import bride from "@/assets/bride.jpeg";
-import interior from "@/assets/salon-interior.jpeg";
-import work from "@/assets/salon-work.jpeg";
-import clients from "@/assets/clients.jpeg";
+import bride from "@/assets/bride.webp";
+import interior from "@/assets/salon-interior.webp";
+import work from "@/assets/salon-work.webp";
+import clients from "@/assets/clients.webp";
 
 const items = [
   { src: bride, alt: "Bridal makeup in Indirapuram", cat: "Bridal" },
@@ -50,7 +50,7 @@ export default function Gallery() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {filtered.map((it, i) => (
               <div key={i} className="rounded-2xl overflow-hidden shadow-soft hover:shadow-elegant transition-smooth group">
-                <img src={it.src} alt={it.alt} loading="lazy" className="w-full h-64 object-cover group-hover:scale-105 transition-smooth" />
+                <img src={it.src} alt={it.alt} loading="lazy" decoding="async" width={400} height={256} className="w-full h-64 object-cover group-hover:scale-105 transition-smooth" />
               </div>
             ))}
           </div>

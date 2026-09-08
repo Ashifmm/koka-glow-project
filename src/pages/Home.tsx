@@ -1,11 +1,55 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, Scissors, Crown, Heart, Star, MapPin, ArrowRight, MessageCircle, Phone } from "lucide-react";
 import SEO from "@/components/SEO";
 import { WHATSAPP_LINK, PHONE_LINK, DIRECTIONS_LINK } from "@/lib/contact";
-import bride from "@/assets/bride.jpeg";
-import interior from "@/assets/salon-interior.jpeg";
-import work from "@/assets/salon-work.jpeg";
-import clients from "@/assets/clients.jpeg";
+import bride from "@/assets/bride.webp";
+import interior from "@/assets/salon-interior.webp";
+import work from "@/assets/salon-work.webp";
+import clients from "@/assets/clients.webp";
+
+function LazyVideo({ id, label }: { id: string; label: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          videoRef.current?.play().catch(() => {});
+        } else {
+          videoRef.current?.pause();
+        }
+      },
+      { rootMargin: "200px", threshold: 0.1 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="relative rounded-2xl overflow-hidden aspect-[9/16] bg-muted/40 shadow-elegant">
+      <video
+        ref={videoRef}
+        src={shouldLoad ? `/videos/${id}.mp4` : undefined}
+        poster={`/videos/${id}-poster.webp`}
+        preload="none"
+        muted
+        loop
+        autoPlay
+        playsInline
+        className="w-full h-full object-cover rounded-2xl"
+        aria-label={label}
+      />
+    </div>
+  );
+}
 
 const highlights = [
   { icon: Crown, title: "Bridal Makeup", desc: "Signature bridal looks for your big day in Indirapuram." },
@@ -31,7 +75,16 @@ export default function Home() {
 
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden">
-        <img src={interior} alt="KOKA Beauty Lounge salon interior in Indirapuram" className="absolute inset-0 w-full h-full object-cover" loading="eager" />
+        <img
+          src={interior}
+          alt="KOKA Beauty Lounge salon interior in Indirapuram"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          width={1169}
+          height={1424}
+        />
         <div className="absolute inset-0 bg-gradient-hero" style={{ background: "linear-gradient(135deg, hsl(340 30% 15% / 0.75), hsl(340 50% 25% / 0.55))" }} />
         <div className="relative container mx-auto px-4 py-20 text-primary-foreground">
           <div className="max-w-2xl animate-fade-up">
@@ -98,9 +151,7 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
             {["v3", "v1", "v2"].map(v => (
-              <video key={v} src={`/videos/${v}.mp4`} muted loop autoPlay playsInline
-                className="rounded-2xl w-full aspect-[9/16] object-cover shadow-elegant"
-                aria-label="KOKA Beauty Lounge salon video" />
+              <LazyVideo key={v} id={v} label="KOKA Beauty Lounge salon video" />
             ))}
           </div>
         </div>
@@ -117,10 +168,10 @@ export default function Home() {
             <Link to="/gallery" className="text-primary font-medium inline-flex items-center gap-2">View Gallery <ArrowRight size={18} /></Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <img src={bride} alt="Bridal makeup in Indirapuram by KOKA" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" />
-            <img src={interior} alt="Luxury salon interior" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" />
-            <img src={work} alt="Hair styling at KOKA Beauty Lounge" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" />
-            <img src={clients} alt="Happy clients styled at KOKA" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" />
+            <img src={bride} alt="Bridal makeup in Indirapuram by KOKA" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" decoding="async" width={585} height={718} />
+            <img src={interior} alt="Luxury salon interior" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" decoding="async" width={585} height={712} />
+            <img src={work} alt="Hair styling at KOKA Beauty Lounge" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" decoding="async" width={585} height={458} />
+            <img src={clients} alt="Happy clients styled at KOKA" className="rounded-2xl w-full h-72 object-cover hover:scale-[1.02] transition-smooth shadow-soft" loading="lazy" decoding="async" width={585} height={720} />
           </div>
         </div>
       </section>

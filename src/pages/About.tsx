@@ -1,6 +1,6 @@
 import SEO from "@/components/SEO";
 import { Award, Heart, Sparkles, Users } from "lucide-react";
-import interior from "@/assets/salon-interior.jpeg";
+import interior from "@/assets/salon-interior.webp";
 
 const reasons = [
   { icon: Award, title: "Trained Experts", desc: "A passionate team of certified stylists & makeup artists." },
@@ -27,7 +27,7 @@ export default function About() {
 
       <section className="py-16">
         <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 items-center">
-          <img src={interior} alt="KOKA Beauty Lounge salon in Indirapuram" className="rounded-3xl shadow-elegant w-full object-cover h-[460px]" />
+          <img src={interior} alt="KOKA Beauty Lounge salon in Indirapuram" loading="lazy" decoding="async" width={585} height={460} className="rounded-3xl shadow-elegant w-full object-cover h-[460px]" />
           <div>
             <p className="text-gold uppercase tracking-[0.3em] text-xs mb-3">Established 16 April 2024</p>
             <h2 className="font-serif text-4xl mb-5">Beauty crafted with love</h2>
